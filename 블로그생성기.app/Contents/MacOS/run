@@ -1,0 +1,14 @@
+#!/bin/bash
+# 블로그 SEO 생성기 실행 (웹 버전)
+
+PROJECT_DIR="/Users/songhyeon-u/IdeaProjects/writingProject"
+STREAMLIT="$PROJECT_DIR/venv/bin/streamlit"
+
+cd "$PROJECT_DIR"
+
+if [ -f "$STREAMLIT" ]; then
+    $STREAMLIT run blog_generator_web.py --server.headless=false
+else
+    osascript -e 'display dialog "Streamlit이 설치되지 않았습니다.\n\n터미널에서 설치하세요:\npip install streamlit" buttons {"확인"} default button 1 with icon stop'
+    exit 1
+fi
